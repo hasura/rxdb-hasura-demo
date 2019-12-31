@@ -5,6 +5,8 @@ const TodoItem = ({index, todo}) => {
   const removeTodo = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
+    todo.remove()
   };
 
   const toggleTodo = () => {
