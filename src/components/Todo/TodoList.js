@@ -25,7 +25,7 @@ class TodoList extends Component {
   }
 
   clearCompleted() {
-
+    this.props.db.todos.find({ isCompleted: true}).remove()
   }
 
   render() {
