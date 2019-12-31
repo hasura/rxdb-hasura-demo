@@ -14,9 +14,9 @@ class TodoListWrapper extends Component {
       <div className="todoWrapper">
         <div className="sectionHeader"> Todos </div>
 
-        <TodoInput auth={this.props.auth} />
+        <TodoInput auth={this.props.auth} db={this.props.db} />
 
-        <TodoList todos={this.state.todos} auth={this.props.auth} />
+        <TodoList todos={this.state.todos} db={this.props.db} auth={this.props.auth} />
       </div>
     );
   }

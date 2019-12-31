@@ -6,6 +6,9 @@ import { AUTH_CONFIG } from './auth0-variables';
 import App from './App';
 import Login from './Login';
 
+import * as Database from './Database';
+import Loading from './Loading';
+
 export default class AppWrapper extends React.Component {
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
@@ -29,6 +32,7 @@ export default class AppWrapper extends React.Component {
     this.state = {
       idToken: null,
       userId: localStorage.getItem("userId"),
+      db: null,
     };
   }
 
@@ -122,7 +126,11 @@ export default class AppWrapper extends React.Component {
     return new Date().getTime() > expiresAt;
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const db = await Database.createDb()
+
+    this.setState({ db });
+
     // If this is a callback URL then do the right things
     const location = this.props.location;
     if (location && location.pathname.startsWith('/callback') && /access_token|id_token|error/.test(location.hash)) {
@@ -148,9 +156,14 @@ export default class AppWrapper extends React.Component {
       return (<Login loginHandler={this.login} />);
     }
 
+    if(!this.state.db) {
+      return <Loading />
+    }
+
     return (<App
       auth={{ userId: this.userId }}
       logoutHandler={this.logout}
+      db={this.state.db}
     />);
   }
 }

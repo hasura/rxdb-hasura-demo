@@ -3,13 +3,13 @@ import React from 'react';
 import Header from './Header';
 import TodoListWrapper from './Todo/TodoListWrapper';
 
-const App = ({auth, logoutHandler}) => {
+const App = ({auth, db, logoutHandler}) => {
   
   return (
     <div>
       <Header logoutHandler={logoutHandler} />
       <div className="todo-list">
-        <TodoListWrapper auth={auth} />
+        <TodoListWrapper auth={auth} db={db} />
       </div>
     </div>
   );

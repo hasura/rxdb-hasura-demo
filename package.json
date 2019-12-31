@@ -5,12 +5,14 @@
   "dependencies": {
     "auth0-js": "^9.10.1",
     "bootstrap": "^4.1.3",
+    "pouchdb-adapter-idb": "^7.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.12.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "rxdb": "^8.7.4"
   },
   "devDependencies": {
     "husky": "^1.0.0-rc.15",
