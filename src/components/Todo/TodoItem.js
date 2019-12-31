@@ -8,7 +8,14 @@ const TodoItem = ({index, todo}) => {
   };
 
   const toggleTodo = () => {
+    delete todo._data["_deleted"]
+    delete todo._data["_revisions"]
 
+    todo.update({
+      $set: {
+        isCompleted: !todo.isCompleted,
+      }
+    })
   };
 
   return (
