@@ -9,6 +9,20 @@ class TodoListWrapper extends Component {
     todos: []
   }
 
+  rxSubs = []
+
+  async componentDidMount() {
+    const sub = this.props.db.todos.find()
+                .sort('createdAt').$.subscribe(todos => {
+        if (!todos) {
+            return;
+        }
+                
+        this.setState({todos});
+    });
+    this.rxSubs.push(sub);
+  }
+
   render() {
     return (
       <div className="todoWrapper">
