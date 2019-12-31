@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import uuidv4 from 'uuid/v4';
 
 class TodoInput extends React.Component {
   constructor() {
@@ -18,7 +19,13 @@ class TodoInput extends React.Component {
   }
 
   addTodo(text) {
-
+    this.props.db.todos.insert({
+      id: uuidv4(),
+      text: text,
+      isCompleted: false,
+      createdAt: new Date().toISOString(),
+      userId: this.props.auth.userId
+    });
   }
 
   handleTextboxKeyPress(e) {
