@@ -16,4 +16,4 @@ const mainRoutes = (
 
 ReactDOM.render(mainRoutes, document.getElementById("root"));
 
-serviceWorker.unregister();
+serviceWorker.register();
