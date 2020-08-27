@@ -84,7 +84,7 @@ export default class AppWrapper extends React.Component {
   }
 
   renewSession() {
-    const interval = setInterval(() => {
+    setInterval(() => {
       const shouldRenewSession = this.isLoggedIn && (!this.idToken || this.isExpired());
 
       if (window.navigator.onLine && shouldRenewSession) {
